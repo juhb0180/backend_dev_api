@@ -1,7 +1,7 @@
 {
   "author": "Juan M. Bravo",
   "description": "A project that does something awesome",
-  "keywords": ["descriptive","related","words"],
+  "keywords": ["descriptive","related","freecodecamp"],
   "name": "fcc-learn-npm-package-json",
   "dependencies": {
     "express": "^4.14.0"
