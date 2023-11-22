@@ -9,6 +9,10 @@ app.get("/", function (req, res) {
 
 app.use("/public", express.static(__dirname +"/public/style.css"));
 
+/*app.use("/public", (req, res) {
+    console.log("Hello Express");
+    res.express.static(__dirname +"/public/style.css")    
+});*/
 
 console.log("Hello Express");
 
