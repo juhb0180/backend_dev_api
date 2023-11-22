@@ -9,10 +9,13 @@ app.get("/", function (req, res) {
 
 app.use("/public", express.static(__dirname +"/public"));
 
-/*app.use("/public", (req, res) {
+app.get("/json", function (req, res) {
     console.log("Hello Express");
-    res.express.static(__dirname +"/public/style.css")    
-});*/
+    //res.send("Hello Express");
+    res.sendFile({"message":"Hello json"});
+});
+
+
 
 console.log("Hello Express");
 
