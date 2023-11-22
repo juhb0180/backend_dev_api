@@ -14,11 +14,15 @@ app.use("/public", express.static(__dirname + "/public"));
 app.get("/json", function (req, res) {
     console.log("Hello Express");
     //res.send("Hello Express");
+
     if (process.env.MESSAGE_STYLE==="uppercase") {
-        res.json({ "message": "Hello json".toUpperCase });
+        cad = "Hello Json".toUpperCase();        
     } else {
-        res.json({ "message": "Hello json".toLowerCase });
+        cad = "Hello Json";
     }
+
+    res.json({ "message": cad });
+
 });
 
 
