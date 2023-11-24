@@ -11,24 +11,26 @@ app.get("/", function (req, res) {
 
 app.use("/public", express.static(__dirname + "/public"));
 
-app.get("/json", function (req, res) {
+app.get("/json", function (req, res, next) {
     console.log("Hello Express");
     //res.send("Hello Express");
 
     console.log(process.env.MESSAGE_STYLE);
-    
 
-    if (process.env.MESSAGE_STYLE==="uppercase") {
-        cad = "Hello Json".toUpperCase();        
+
+    if (process.env.MESSAGE_STYLE === "uppercase") {
+        cad = "Hello Json".toUpperCase();
         console.log(cad);
         res.json({ "message": cad });
     } else {
-        cad = "Hello json"; 
+        cad = "Hello json";
         console.log(cad);
         res.json({ "message": cad });
     }
 
-
+    var string = req.method + " " + req.path + "-" + req.ip;
+    console.log(string);
+    next();
 });
 
 
