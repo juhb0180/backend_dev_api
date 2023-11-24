@@ -18,7 +18,7 @@ app.get("/json", function (req, res) {
     if (process.env.MESSAGE_STYLE==="uppercase") {
         cad = "Hello Json".toUpperCase();        
     } else {
-        cad = "Hello Json".toUpperCase(); 
+        cad = "Hello Json"; 
     }
 
     res.json({ "message": cad });
