@@ -3,15 +3,19 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 
-app.get("/", function (req, res) {
+app.get("/", function (req, res, next) {
     console.log("Hello Express");
     //res.send("Hello Express");
     res.sendFile(__dirname + "/views/index.html");
+    var string = req.method + " " + req.path + "-" + req.ip;
+    console.log(string);
+    next()
+
 });
 
 app.use("/public", express.static(__dirname + "/public"));
 
-app.get("/json", function (req, res, next) {
+app.get("/json", function (req, res) {
     console.log("Hello Express");
     //res.send("Hello Express");
 
@@ -26,11 +30,7 @@ app.get("/json", function (req, res, next) {
         cad = "Hello json";
         console.log(cad);
         res.json({ "message": cad });
-    }
-
-    var string = req.method + " " + req.path + "-" + req.ip;
-    console.log(string);
-    next()
+    }   
 });
 
 
