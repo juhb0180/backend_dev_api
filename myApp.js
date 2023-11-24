@@ -3,6 +3,14 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 
+app.use(function middleware(req, res, next) {
+    // Do something
+    // Call the next function in line:
+    var string = req.method + " " + req.path + "-" + req.ip;
+    console.log(string);
+    next()
+});
+
 app.get("/", function (req, res) {
     //console.log("Hello Express");
     //res.send("Hello Express");
@@ -10,14 +18,6 @@ app.get("/", function (req, res) {
 });
 
 app.use("/public", express.static(__dirname + "/public"));
-
-app.use(function middleware(req, res, next) {
-    // Do something
-    // Call the next function in line:
-    var string = req.method + " " + req.path + "-" + req.ip;
-    console.log(string);
-    next()    
-  });
 
 app.get("/json", function (req, res) {
 
@@ -29,7 +29,7 @@ app.get("/json", function (req, res) {
         cad = "Hello json";
         console.log(cad);
         res.json({ "message": cad });
-    }   
+    }
 });
 
 
