@@ -22,7 +22,7 @@ app.get("/json", function (req, res) {
         cad = "Hello Json".toUpperCase();        
         console.log(cad);
     } else {
-        cad = "Hello Json"; 
+        cad = "Hello json"; 
         console.log(cad);
     }
 
