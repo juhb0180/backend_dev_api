@@ -3,25 +3,23 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 
-app.get("/", function (req, res, next) {
-    console.log("Hello Express");
+app.get("/", function (req, res) {
+    //console.log("Hello Express");
     //res.send("Hello Express");
     res.sendFile(__dirname + "/views/index.html");
-    var string = req.method + " " + req.path + "-" + req.ip;
-    console.log(string);
-    next()
-
 });
 
 app.use("/public", express.static(__dirname + "/public"));
 
-app.get("/json", function (req, res, next) {
-    console.log("Hello Express");
-    //res.send("Hello Express");
+app.use(function middleware(req, res, next) {
+    // Do something
+    // Call the next function in line:
+    var string = req.method + " " + req.path + "-" + req.ip;
+    console.log(string);
+    next()    
+  });
 
-    console.log(process.env.MESSAGE_STYLE);
-console.log(string);
-    next()
+app.get("/json", function (req, res) {
 
     if (process.env.MESSAGE_STYLE === "uppercase") {
         cad = "Hello Json".toUpperCase();
@@ -32,11 +30,6 @@ console.log(string);
         console.log(cad);
         res.json({ "message": cad });
     }   
-
-    var string = req.method + " " + req.path + "-" + req.ip;
-    console.log(string);
-    next()
-
 });
 
 
